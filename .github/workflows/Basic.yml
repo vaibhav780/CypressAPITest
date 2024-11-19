@@ -21,4 +21,4 @@ jobs:
         run : npm ci
 
       - name: Run Cypress run
-        run : npm run cy:tests:CHROME
+        run : npm run cy:tests
