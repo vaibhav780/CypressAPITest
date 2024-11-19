@@ -1,0 +1,24 @@
+name: Cypress E2E tests
+# trigger
+on:
+  workflow_dispatch:
+
+jobs:
+  my_job:
+    name: Cypress test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout_code
+        uses: actions/checkout@v4
+      # Install npm dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 13
+      - name : Install dependecies
+        run : npm ci
+
+      - name: Run Cypress run
+        run : npm run cy:tests:CHROME
