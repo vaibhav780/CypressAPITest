@@ -17,8 +17,16 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 13
-      - name: Cypress.io
-        run : cypress-io/github-action@v6
+      - name: Cypress run
+        uses: cypress-io/github-action@v4.2.0
+        with:
+          install-command: yarn install
+          build: yarn build:test
+          start: yarn e2e:start
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 120
+          browser: chrome
+          record: true
 
       - name: Run Cypress run
         run : npm run cy:tests
