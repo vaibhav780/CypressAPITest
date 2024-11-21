@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 13
       - name: Cypress.io
-        run : cypress-io/github-action@v2
+        run : cypress-io/github-action@v6.5.0
 
       - name: Run Cypress run
         run : npm run cy:tests
