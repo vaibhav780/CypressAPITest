@@ -4,29 +4,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  my_job:
-    name: Cypress test
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout_code
-        uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Install Node.js
-        uses: actions/setup-node@v4.1.0
-        with:
-          node-version: 13
-      - name: Cypress run
-        uses: cypress-io/github-action@v4.2.0
-        with:
-          install-command: yarn install
-          build: yarn build:test
-          start: yarn e2e:start
-          wait-on: 'http://localhost:3000'
-          wait-on-timeout: 120
-          browser: chrome
-          record: true
-
-      - name: Run Cypress run
-        run : npm run cy:tests
+ Cypress-Test:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout GitCode
+       uses: actions/checkout@v2
+ 
+     - name: Run Cypress Test
+       uses: cypress-io/github-action@v4
+       with:
+         command: npx cypress run
+         browser: chrome
